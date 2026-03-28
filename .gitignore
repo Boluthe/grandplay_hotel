@@ -1,0 +1,17 @@
+# OS
+Thumbs.db
+.DS_Store
+
+# Editors
+.vscode/*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Dependency caches
+node_modules/
+.npm/
+
+# Python cache
+__pycache__/
