@@ -198,7 +198,7 @@ main {
   display: flex;
   align-items: center;
   background:
-    linear-gradient(to right, rgba(255, 247, 236, 0.78), rgba(255, 247, 236, 0.08) 65%),
+    linear-gradient(to right, rgba(24, 34, 45, 0.48), rgba(255, 247, 236, 0.18) 65%),
     url("../assets/images/hero.jpg")
       center / cover no-repeat;
 }
@@ -218,6 +218,13 @@ main {
   z-index: 2;
   max-width: 500px;
   padding-top: 40px;
+}
+
+.hero h1,
+.hero .lead,
+.hero .eyebrow {
+  text-shadow: 0 2px 8px rgba(24,34,45,0.22), 0 1px 0 rgba(24,34,45,0.10);
+}
 }
 
 .eyebrow {
