@@ -69,19 +69,8 @@ Option 2
 4. Source: Deploy from a branch.
 5. Branch: main, folder: root.
 6. Save and wait for publish URL.
-
-GitHub Pages custom domain checklist:
-
-1. Add `CNAME` file at repository root with `grandplayhotel.com`.
-2. Keep custom domain in GitHub Pages settings set to `grandplayhotel.com`.
-3. Configure DNS records:
-	- A: `185.199.108.153`
-	- A: `185.199.109.153`
-	- A: `185.199.110.153`
-	- A: `185.199.111.153`
-	- CNAME (www): `boluthe.github.io`
-4. If using Cloudflare, set these records to DNS only (not proxied) until certificate is issued.
-5. Wait up to 24 hours, then enable Enforce HTTPS in GitHub Pages settings.
+7. Open your site at:
+   - `https://boluthe.github.io/grandplay_hotel/`
 
 ### Netlify
 
