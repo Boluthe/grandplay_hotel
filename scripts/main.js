@@ -83,41 +83,6 @@ function wireRevealAnimations() {
   targets.forEach((target) => observer.observe(target));
 }
 
-function wirePromoAutoplay() {
-  const strip = document.querySelector(".promo-strip");
-  if (!strip) return;
-  if (strip.scrollWidth <= strip.clientWidth + 4) return;
-  if (window.matchMedia("(hover: none)").matches) return;
-
-  let timer;
-  let paused = false;
-
-  const tick = () => {
-    if (paused) return;
-    const cardWidth = strip.querySelector(".promo-card")?.clientWidth || 300;
-    const maxLeft = strip.scrollWidth - strip.clientWidth;
-
-    if (strip.scrollLeft + cardWidth + 8 >= maxLeft) {
-      strip.scrollTo({ left: 0, behavior: "smooth" });
-    } else {
-      strip.scrollBy({ left: cardWidth + 24, behavior: "smooth" });
-    }
-  };
-
-  timer = window.setInterval(tick, 4000);
-
-  strip.addEventListener("mouseenter", () => {
-    paused = true;
-  });
-  strip.addEventListener("mouseleave", () => {
-    paused = false;
-  });
-
-  window.addEventListener("beforeunload", () => {
-    window.clearInterval(timer);
-  });
-}
-
 function wireLightboxes() {
   const galleryDialog = document.getElementById("lightboxDialog");
   const galleryText = document.getElementById("lightboxText");
@@ -187,6 +152,16 @@ function wireEventForm() {
 wireWhatsAppLinks();
 wireNavbarBehavior();
 wireRevealAnimations();
-wirePromoAutoplay();
 wireLightboxes();
 wireEventForm();
+
+// Smooth scroll for 'Back to top' link in footer
+document.addEventListener("DOMContentLoaded", () => {
+  const backToTop = document.querySelector('footer a[href="#top"]');
+  if (backToTop) {
+    backToTop.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+});

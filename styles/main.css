@@ -740,10 +740,6 @@ option {
     --gutter: 18px;
   }
 
-  body {
-    padding-bottom: 86px;
-  }
-
   .nav {
     min-height: auto;
     padding: 10px 0;
