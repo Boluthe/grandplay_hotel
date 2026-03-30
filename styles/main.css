@@ -1,3 +1,99 @@
+/* Smart-Vibe Popup Styles */
+.smart-vibe-popup {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(24,34,45,0.32);
+  backdrop-filter: blur(12px);
+}
+.smart-vibe-popup .card-style {
+  background: rgba(255, 251, 245, 0.97);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  padding: 28px 22px 22px;
+  max-width: 370px;
+  width: 90%;
+  font-family: "Manrope", "Poppins", Arial, sans-serif;
+  color: var(--ink);
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+}
+.smart-vibe-popup .card-style img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: var(--radius-md);
+  margin-bottom: 18px;
+  object-fit: cover;
+  box-shadow: 0 4px 18px rgba(24,34,45,0.10);
+}
+.smart-vibe-popup .card-style h2 {
+  margin: 0 0 10px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 2rem;
+}
+.smart-vibe-popup .card-style p {
+  margin: 0 0 18px;
+  font-size: 1.08rem;
+  opacity: 0.92;
+}
+.smart-vibe-popup .card-style a {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  background: var(--azure);
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.08rem;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(24,34,45,0.10);
+  margin-bottom: 2px;
+  border: none;
+  transition: background 0.18s, color 0.18s;
+}
+.smart-vibe-popup .card-style a:hover {
+  background: var(--azure-deep);
+}
+.smart-vibe-popup .card-style button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0,0,0,0.08);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 2rem;
+  line-height: 1;
+  color: #333;
+  cursor: pointer;
+  z-index: 2;
+}
+@media (max-width: 700px) {
+  .smart-vibe-popup {
+    align-items: flex-end;
+  }
+  .smart-vibe-popup .card-style {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    width: 98vw;
+    max-width: 420px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
 :root {
   --azure: #1779ba;
   --azure-deep: #0e5f95;

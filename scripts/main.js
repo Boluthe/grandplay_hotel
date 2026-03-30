@@ -155,6 +155,79 @@ wireRevealAnimations();
 wireLightboxes();
 wireEventForm();
 
+// --- Smart-Vibe Popup System ---
+const SMART_POPUP_WA = {
+  brunch: `https://wa.me/2348000000000?text=Hi!%20I’d%20like%20to%20reserve%20a%20spot%20for%20Sunday%20Brunch%20at%20Grandplay.`,
+  poolParty: `https://wa.me/2348000000000?text=Hi!%20I’d%20like%20to%20book%20a%20spot%20for%20the%20Last%20Saturday%20Pool%20Party.`
+};
+
+function showPopup(type) {
+  // Remove any existing popup
+  document.querySelectorAll('.smart-vibe-popup').forEach(el => el.remove());
+
+  // Popup content by type
+  const config = {
+    brunch: {
+      bg: '#F5E6D3',
+      blur: 'backdrop-blur-md',
+      title: 'Sunday Brunch',
+      subtitle: 'Reserve your table for a luxe brunch experience.',
+      img: 'assets/images/brunch.jpg', // Replace with real asset
+      font: 'Playfair Display, serif',
+      btn: 'Reserve Brunch',
+      btnColor: '#0EA5E9',
+      btnText: '#fff',
+      wa: SMART_POPUP_WA.brunch
+    },
+    poolParty: {
+      bg: '#0369A1',
+      blur: 'backdrop-blur-lg',
+      title: 'Last Saturday Pool Party',
+      subtitle: 'Book your spot for the ultimate poolside night.',
+      img: 'assets/images/promo-room-b.jpg',
+      font: 'Poppins, Inter, sans-serif',
+      btn: 'Book Pool Party',
+      btnColor: '#D4AF37',
+      btnText: '#222',
+      wa: SMART_POPUP_WA.poolParty
+    }
+  }[type];
+  if (!config) return;
+
+    // Create popup element
+    const popup = document.createElement('div');
+    popup.className = 'smart-vibe-popup';
+    popup.innerHTML = `
+      <div class="card-style">
+        <button aria-label="Close popup">&times;</button>
+        <img src="${config.img}" alt="${config.title}">
+        <h2>${config.title}</h2>
+        <p>${config.subtitle}</p>
+        <a href="${config.wa}" target="_blank" rel="noopener noreferrer">${config.btn}</a>
+      </div>
+    `;
+    document.body.appendChild(popup);
+    // Close logic
+    popup.querySelector('button').onclick = () => popup.remove();
+}
+
+// Smart logic & trigger
+const today = new Date();
+const dayOfWeek = today.getDay(); // 0 = Sun, 5 = Fri, 6 = Sat
+const date = today.getDate();
+const month = today.getMonth();
+const year = today.getFullYear();
+const lastDayOfMonth = new Date(year, month + 1, 0).getDate();
+const isLastWeek = (date > lastDayOfMonth - 7);
+
+function triggerSmartPopup() {
+  // Always show Pool Party for demo; comment/uncomment as needed
+  setTimeout(() => {
+    showPopup('poolParty');
+  }, 8000);
+}
+window.addEventListener('DOMContentLoaded', triggerSmartPopup);
+
 // Smooth scroll for 'Back to top' link in footer
 document.addEventListener("DOMContentLoaded", () => {
   const backToTop = document.querySelector('footer a[href="#top"]');
